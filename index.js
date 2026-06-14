@@ -20,7 +20,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(w, h);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = .5;
+renderer.toneMappingExposure = 1.25;
 // ensure clear color is fully transparent
 renderer.setClearColor(0x000000, 0);
 document.body.appendChild(renderer.domElement);
@@ -73,8 +73,8 @@ trafficControl.position.sub(center); // move model so its center is at (0,0,0) r
 pivot.add(trafficControl);
 
 // start rotated ~270 degrees around Y and a slight X tilt
-pivot.rotation.y = 4 * Math.PI / 2; // ~270deg
-pivot.rotation.x = 0.5;
+pivot.rotation.y = -3 * Math.PI / 2; // ~270deg
+// pivot.rotation.x = 0.5;
 
 // continuous spin setup
 const clock = new THREE.Clock();
@@ -108,7 +108,7 @@ canvas.addEventListener('pointerleave', () => { isRotating = true; }, { passive:
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x666666, 2.5); // slightly stronger
 scene.add(hemiLight);
 // add ambient fill light (no directional light)
-const ambient = new THREE.AmbientLight(0xffffff, 0.7); // slightly stronger
+const ambient = new THREE.AmbientLight(0xffffff, 1.7); // slightly stronger
 scene.add(ambient);
 
 // Saturation post-process shader + composer (increase scene saturation)
